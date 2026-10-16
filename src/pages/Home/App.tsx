@@ -1,30 +1,42 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import heroImg from '../../assets/hero.png'
+import reactLogo from '../../assets/react.svg'
+import viteLogo from '../../assets/vite.svg'
 import './App.css'
+import Hero from '../../components/WPHero'
+import FixedVsSticky from '../../components/FixedVsSticky'
+
+const paragraphStyles = {
+  fontSize:'1rem',
+  fontWeight:'bold',
+  display:'inline-block'
+};
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <FixedVsSticky />
+      <Hero />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
-        <div>
+        <div className='text-amber-800'>
           <h1>Get started</h1>
-          <p>
+          <h3 className='flex justify-center items-center text-xl font-semibold  uppercase border rounded-full py-2 px-4 hover:bg-blue-200 hover:px-16 lg:bg-transparent bg-[SteelBlue]'>with TailwindCSS</h3>
+          <p style={paragraphStyles}>
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
         </div>
         <button
           type="button"
-          className="counter"
+          className="counter disabled:hover:cursor-not-allowed hover:cursor-crosshair"
           onClick={() => setCount((count) => count + 1)}
+          disabled={false}
         >
           Count is {count}
         </button>

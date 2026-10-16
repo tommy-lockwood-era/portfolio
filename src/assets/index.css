@@ -1,0 +1,153 @@
+@import "tailwindcss"; /* TailwindCSS v4+ */
+
+@theme {
+  --text-5xl: 2.5rem;
+
+  --breakpoint-3xl: 120rem;
+
+  --color-brand-blue-300: rgb(188, 209, 253);
+  --color-brand-blue-400: oklch(0.724 0.1076 265.24);
+  --color-brand-blue-base: oklch(0.5252 0.1383 265.24);
+  --color-brand-blue-600: oklch(0.3976 0.1383 265.24);
+  --color-brand-blue-700: oklch(0.2433 0.0911 265.24);
+
+  --color-hero-gray: #edf2f7;
+}
+/*
+Pseudo-class (single colon) that targets the root element of an HTML document
+
+The :root selector is used to set site defaults
+*/
+:root {
+  --text: var(--brand-blue-600);
+  --text-h: var(--brand-blue-700);
+  --bg: hsl(0, 0%, 100%);
+  --border: var(--brand-blue-700);
+  --code-bg: #f4f3ec;
+  --accent: var(--brand-blue-base);
+  --accent-bg: var(--brand-blue-300);
+  --accent-border: var(--brand-blue-base);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* monochromatic palette */
+  --brand-blue-300: rgb(188, 209, 253);
+  --brand-blue-400: oklch(0.724 0.1076 265.24);
+  --brand-blue-base: oklch(0.5252 0.1383 265.24);
+  --brand-blue-600: oklch(0.3976 0.1383 265.24);
+  --brand-blue-700: oklch(0.2433 0.0911 265.24);
+
+  
+
+  --sans: Inter, system-ui, 'Segoe UI', sans-serif;
+  --heading: Lora, Noto Serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  /* font: 18px/1.5 var(--sans); */
+  /* The above can be broken into 3 separate properties */
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: var(--sans); 
+  letter-spacing: 0.18px;
+  color: var(--text);
+  
+  /* We defined two color schemes for our site--light and dark */
+  color-scheme: light dark;
+
+  background: var(--bg);
+
+  /* are browsers allowed to calculate styles for your font that it does not have */
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  @layer components {
+    #social .button-icon {
+      filter: invert(1) brightness(2);
+    }
+  }
+}
+
+#root {
+  width: 1440px;        /* TW w-[1440px] */
+  max-width: 100%;      /* TW max-w-full */
+  margin-block: 0;      /* TW my-0 */
+  margin-inline: auto;  /* TW mx-auto */
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;   /* TW min-h-svh */
+  display: flex;        /* TW flex */
+  flex-direction: column; /* TW flex-col */
+  box-sizing: border-box; /* TW box-border */
+}
+
+@layer base {
+  h1, h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    color: var(--text-h);
+  }
+
+  h1 {
+    font-size: 4rem;
+    letter-spacing: -1.68px;
+    line-height: 1.1;
+    @media (max-width: 1024px) {
+      font-size: 36px;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 118%;
+    letter-spacing: -0.24px;
+    @media (max-width: 1024px) {
+      font-size: 20px;
+    }
+  }
+
+  code {
+    font-size: 15px;
+    line-height: 135%;
+    padding: 4px 8px;
+    background: var(--code-bg);
+  }
+
+  b {
+    font-weight: 600;
+  }
+}
+
+/* More specific styling for specific elements in the site */
+@layer components {
+  code, .counter {
+    font-family: var(--mono);
+    display: inline-flex;
+    border-radius: 4px;
+    color: var(--text-h);
+  }
+}
+
